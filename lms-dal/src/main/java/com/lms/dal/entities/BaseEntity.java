@@ -8,4 +8,12 @@ import java.io.Serializable;
 public class BaseEntity implements Serializable {
     @Version
     private long version;
+
+	public long getVersion() {
+		return version;
+	}
+
+	public void setVersion(long version) {
+		this.version = version;
+	}
 }

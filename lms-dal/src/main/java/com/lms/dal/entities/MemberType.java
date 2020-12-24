@@ -6,15 +6,15 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-@Table(name = "book_type")
-public class BookType extends BaseEntity {
+@Table(name = "member_type")
+public class MemberType extends BaseEntity {
 
-    @Id
+	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "first_name")
-    private String firstName;
+    @Column(name = "type")
+    private String type;
 
 	public Integer getId() {
 		return id;
@@ -24,11 +24,11 @@ public class BookType extends BaseEntity {
 		this.id = id;
 	}
 
-	public String getFirstName() {
-		return firstName;
+	public String getType() {
+		return type;
 	}
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
+	public void setType(String type) {
+		this.type = type;
 	}
 }
