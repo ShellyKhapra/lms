@@ -2,10 +2,7 @@ package com.lms.dal.entities;
 
 import java.util.Date;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 
 @Entity
@@ -25,11 +22,19 @@ public class Book extends BaseEntity {
     @Column(name = "number_of_copies")
     private Integer numberOfCopies;
 
-    @Column(name = "author_id")
-    private Integer authorId;
+//    @Column(name = "author_id")
+//    private Integer authorId;
 
-    @Column(name = "book_type_id")
-    private Integer bookTypeId;
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "author_id")
+	private Author author;
+
+//    @Column(name = "book_type_id")
+//    private Integer bookTypeId;
+
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "book_type_id")
+	private BookType bookType;
 
 	public Integer getId() {
 		return id;
@@ -63,19 +68,19 @@ public class Book extends BaseEntity {
 		this.numberOfCopies = numberOfCopies;
 	}
 
-	public Integer getAuthorId() {
-		return authorId;
+	public Author getAuthor() {
+		return author;
 	}
 
-	public void setAuthorId(Integer authorId) {
-		this.authorId = authorId;
+	public void setAuthor(Author author) {
+		this.author = author;
 	}
 
-	public Integer getBookTypeId() {
-		return bookTypeId;
+	public BookType getBookType() {
+		return bookType;
 	}
 
-	public void setBookTypeId(Integer bookTypeId) {
-		this.bookTypeId = bookTypeId;
+	public void setBookType(BookType bookType) {
+		this.bookType = bookType;
 	}
 }

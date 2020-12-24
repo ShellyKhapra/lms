@@ -1,0 +1,15 @@
+server:
+  type: default
+  applicationContextPath: /lms
+  adminContextPath: /lms
+    - type: http
+      bindHost: ${DW_APP_HOST:-0.0.0.0}
+      port: ${DW_APP_PORT:-8080}
+  adminConnectors:
+    - type: http
+      bindHost: ${DW_ADMIN_HOST:-0.0.0.0}
+      port: ${DW_ADMIN_PORT:-8081}
+
+# swagger conf, provide the comma separated packages where @Api is used
+swagger:
+  resourcePackage: com.lms.api.resources

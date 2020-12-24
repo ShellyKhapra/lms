@@ -1,8 +1,32 @@
 # Idea files
 .idea/
+*.iml
+
+.idea/
+*.iml
+*.ipr
+*.iws
+**/out/
+*.log
+.idea_modules/
+**/*.iml
+
+
+target/*
 
 # Compiled class file
 *.class
+
+# Folders
+**/target/
+**/logs/
+
+# Maven
+.flattened-pom.xml
+.classpath
+.project
+*.prefs
+*.backup
 
 # Log file
 *.log

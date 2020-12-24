@@ -47,6 +47,7 @@ CREATE TABLE lms.issued_books
     book_id INT NOT NULL,
     member_id INT NOT NULL,
     issued_on DATETIME,
+    returned_on DATETIME,
     version INT DEFAULT 0,
     FOREIGN KEY (book_id) REFERENCES lms.book (id),
     FOREIGN KEY (member_id) REFERENCES lms.member (id)

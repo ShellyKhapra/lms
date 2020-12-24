@@ -2,10 +2,7 @@ package com.lms.dal.entities;
 
 import java.util.Date;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "issued_books")
@@ -23,6 +20,9 @@ public class IssuedBooks extends BaseEntity{
     
     @Column(name = "issued_on")
     private Date issuedOn;
+
+	@Column(name = "returned_on")
+	private Date returnedOn;
 
 	public long getId() {
 		return id;
@@ -54,6 +54,14 @@ public class IssuedBooks extends BaseEntity{
 
 	public void setIssuedOn(Date issuedOn) {
 		this.issuedOn = issuedOn;
+	}
+
+	public Date getReturnedOn() {
+		return returnedOn;
+	}
+
+	public void setReturnedOn(Date returnedOn) {
+		this.returnedOn = returnedOn;
 	}
 	
 }

@@ -1,6 +1,7 @@
 package com.lms.dal.entities;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "author")
@@ -15,6 +16,10 @@ public class Author extends BaseEntity {
 
     @Column(name = "last_name")
     private String lastName;
+
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+    @JoinColumn(name = "author_id")
+    private List<Book> books;
 
     public Integer getId() {
         return id;
@@ -38,5 +43,13 @@ public class Author extends BaseEntity {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public List<Book> getBooks() {
+        return books;
+    }
+
+    public void setBooks(List<Book> books) {
+        this.books = books;
     }
 }
