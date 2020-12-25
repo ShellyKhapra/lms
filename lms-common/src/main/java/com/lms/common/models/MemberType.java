@@ -1,16 +1,9 @@
-package com.lms.dal.entities;
+package com.lms.common.models;
 
-import javax.persistence.*;
+public class MemberType {
 
-@Entity
-@Table(name = "member_type")
-public class MemberType extends BaseEntity {
-
-	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "type")
     private String type;
 
 	public Integer getId() {

@@ -5,7 +5,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "author")
-public class Author extends BaseEntity {
+public class EAuthor extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,7 +19,7 @@ public class Author extends BaseEntity {
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     @JoinColumn(name = "author_id")
-    private List<Book> books;
+    private List<EBook> books;
 
     public Integer getId() {
         return id;
@@ -45,11 +45,11 @@ public class Author extends BaseEntity {
         this.lastName = lastName;
     }
 
-    public List<Book> getBooks() {
+    public List<EBook> getBooks() {
         return books;
     }
 
-    public void setBooks(List<Book> books) {
+    public void setBooks(List<EBook> books) {
         this.books = books;
     }
 }

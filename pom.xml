@@ -14,6 +14,7 @@
     <modules>
 
         <module>lms-dal</module>
+        <module>lms-common</module>
         <module>lms-service</module>
         <module>lms-api</module>
     </modules>

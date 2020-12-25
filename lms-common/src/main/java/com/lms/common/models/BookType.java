@@ -1,21 +1,12 @@
-package com.lms.dal.entities;
+package com.lms.common.models;
 
-import javax.persistence.*;
+
 import java.util.List;
 
-@Entity
-@Table(name = "book_type")
-public class BookType extends BaseEntity {
+public class BookType {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-
-	@Column(name = "type")
     private String type;
-
-	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
-	@JoinColumn(name = "book_type_id")
 	private List<Book> books;
 
 	public Integer getId() {

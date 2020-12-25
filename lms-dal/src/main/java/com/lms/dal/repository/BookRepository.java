@@ -1,15 +1,15 @@
 package com.lms.dal.repository;
 
-import com.lms.dal.entities.Author;
-import com.lms.dal.entities.Book;
+import com.lms.dal.entities.EAuthor;
+import com.lms.dal.entities.EBook;
 import java.util.List;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface BookRepository extends PagingAndSortingRepository<Book, Long> {
+public interface BookRepository extends PagingAndSortingRepository<EBook, Long> {
 
-    List<Book> getBookByAuthor(Author author);
+    List<EBook> getBookByAuthor(EAuthor author);
 
-    List<Book> getBookByAuthorIn(List<Author> authors);
+    List<EBook> getBookByAuthorIn(List<EAuthor> authors);
 }

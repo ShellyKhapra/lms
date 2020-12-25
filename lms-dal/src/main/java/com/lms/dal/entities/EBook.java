@@ -7,7 +7,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "book")
-public class Book extends BaseEntity {
+public class EBook extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,14 +27,14 @@ public class Book extends BaseEntity {
 
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "author_id")
-	private Author author;
+	private EAuthor author;
 
 //    @Column(name = "book_type_id")
 //    private Integer bookTypeId;
 
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "book_type_id")
-	private BookType bookType;
+	private EBookType bookType;
 
 	public Integer getId() {
 		return id;
@@ -68,19 +68,19 @@ public class Book extends BaseEntity {
 		this.numberOfCopies = numberOfCopies;
 	}
 
-	public Author getAuthor() {
+	public EAuthor getAuthor() {
 		return author;
 	}
 
-	public void setAuthor(Author author) {
+	public void setAuthor(EAuthor author) {
 		this.author = author;
 	}
 
-	public BookType getBookType() {
+	public EBookType getBookType() {
 		return bookType;
 	}
 
-	public void setBookType(BookType bookType) {
+	public void setBookType(EBookType bookType) {
 		this.bookType = bookType;
 	}
 }
