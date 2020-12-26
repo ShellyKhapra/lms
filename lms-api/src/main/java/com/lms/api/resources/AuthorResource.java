@@ -110,4 +110,32 @@ public class AuthorResource {
                     Integer id) {
         return this.authorService.getAuthor(id);
     }
+
+    @POST
+    @Operation(
+            description = "Register an author in Library",
+            method = ApiConstants.POST,
+            security = {
+                    @SecurityRequirement(
+                            name = "Authorization",
+                            scopes = {"Authorization"})
+            },
+            operationId = "register")
+    @ApiResponses(
+            value = {
+                    @ApiResponse(
+                            responseCode = "200",
+                            description = ApiConstants.OK,
+                            content = {
+                                    @Content(
+                                            mediaType = MediaType.APPLICATION_JSON,
+                                            schema = @Schema(implementation = Author.class))
+                            }),
+                    @ApiResponse(responseCode = "400", description = ApiConstants.BAD_REQUEST)
+            })
+    public Author register(
+            @Parameter(description = "Author registration request") Author author) {
+
+        return this.authorService.register(author);
+    }
 }

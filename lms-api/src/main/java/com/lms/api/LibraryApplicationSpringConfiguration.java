@@ -6,9 +6,10 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @ComponentScan(
         basePackages = {
-                "com.lms.api",
-                "com.lms.common.models",
-                "com.lms.service"
+                "com.lms.mappers",
+                "com.lms.dal",
+                "com.lms.service",
+                "com.lms.api"
         })
 public class LibraryApplicationSpringConfiguration {
 }

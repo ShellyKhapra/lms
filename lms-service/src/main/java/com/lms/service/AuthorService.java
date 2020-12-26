@@ -23,6 +23,12 @@ public class AuthorService {
         this.authorMapper = authorMapper;
     }
 
+    public Author register(Author author) {
+        EAuthor eAuthor = this.authorMapper.asEAuthor(author);
+        EAuthor savedAuthor = this.authorRepository.save(eAuthor);
+        return this.authorMapper.asAuthor(savedAuthor);
+    }
+
     public AuthorList getAuthors(String firstName, String lastName){
         return null;
     }

@@ -66,15 +66,16 @@ public class Configuration {
         }
 
         public Configuration.SetUser setJdbcUrl(String jdbcUrl) {
-            this.setCatalogAndSchema(jdbcUrl);
+//            this.setCatalogAndSchema(jdbcUrl);
             this.properties.put("jdbcUrl", jdbcUrl);
+            this.properties.put("driverClassName","com.microsoft.sqlserver.jdbc.SQLServerDriver");
             return this;
         }
 
         public Configuration.SetUser setJdbcUrl(String host, String port, String catalog) {
             if (host != null && !host.trim().isEmpty()) {
                 if (catalog != null && !catalog.trim().isEmpty()) {
-                    StringBuilder sb = (new StringBuilder("jdbc:postgresql://")).append(host);
+                    StringBuilder sb = (new StringBuilder("jdbc:sqlserver://")).append(host);
                     if (port != null && !port.isEmpty()) {
                         sb.append(':').append(port);
                     }
