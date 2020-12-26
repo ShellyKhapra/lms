@@ -34,6 +34,7 @@
 
     <build>
         <plugins>
+
             <!-- clean-up the log files and directories when running mvn clean:clean -->
             <plugin>
                 <artifactId>maven-clean-plugin</artifactId>
@@ -50,6 +51,7 @@
                     </filesets>
                 </configuration>
             </plugin>
+
             <!-- Compiler plugin: set the language level -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -67,6 +69,7 @@
                     </annotationProcessorPaths>
                 </configuration>
             </plugin>
+
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>build-helper-maven-plugin</artifactId>
@@ -87,6 +90,7 @@
                     </execution>
                 </executions>
             </plugin>
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
@@ -107,6 +111,8 @@
                     </execution>
                 </executions>
             </plugin>
+
+
         </plugins>
     </build>
 

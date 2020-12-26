@@ -4,6 +4,7 @@ import com.codahale.metrics.SharedMetricRegistries;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.google.common.collect.Sets;
+import com.lms.api.filters.SwaggerToOpenApiFilter;
 import com.lms.api.spring.SpringBundle;
 import io.dropwizard.Application;
 import io.dropwizard.assets.AssetsBundle;
@@ -15,6 +16,8 @@ import io.dropwizard.lifecycle.setup.LifecycleEnvironment;
 import io.dropwizard.server.DefaultServerFactory;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
+import io.federecio.dropwizard.swagger.SwaggerBundle;
+import io.federecio.dropwizard.swagger.SwaggerBundleConfiguration;
 import io.swagger.v3.jaxrs2.integration.resources.BaseOpenApiResource;
 import io.swagger.v3.jaxrs2.integration.resources.OpenApiResource;
 import io.swagger.v3.oas.integration.SwaggerConfiguration;
@@ -53,6 +56,12 @@ public class LibraryApplication extends Application<LibraryApplicationConfigurat
         }
 
         super.initialize(bootstrap);
+
+        bootstrap.addBundle(new SwaggerBundle<LibraryApplicationConfiguration>() {
+            protected SwaggerBundleConfiguration getSwaggerBundleConfiguration(LibraryApplicationConfiguration configuration) {
+                return configuration.getSwaggerBundleConfiguration();
+            }
+        });
     }
 
     @Override
@@ -67,7 +76,7 @@ public class LibraryApplication extends Application<LibraryApplicationConfigurat
 //        environment.jersey().register(new SPMExceptionMapper());
 
         environment.jersey().register(openApi(libraryApplicationConfiguration));
-//        environment.jersey().register(SwaggerToOpenApiFilter.class);
+        environment.jersey().register(SwaggerToOpenApiFilter.class);
 
         runApp(libraryApplicationConfiguration, environment);
     }
