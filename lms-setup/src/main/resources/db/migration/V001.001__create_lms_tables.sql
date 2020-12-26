@@ -1,4 +1,4 @@
-CREATE TABLE lms.author
+CREATE TABLE dbo.author
 (
     id INT PRIMARY KEY IDENTITY (1, 1),
     first_name VARCHAR (50) NOT NULL,
@@ -6,14 +6,14 @@ CREATE TABLE lms.author
     version INT DEFAULT 0
 );
 
-CREATE TABLE lms.book_type
+CREATE TABLE dbo.book_type
 (
     id INT PRIMARY KEY IDENTITY (1, 1),
     type VARCHAR (50) NOT NULL,
     version INT DEFAULT 0
 );
 
-CREATE TABLE lms.book (
+CREATE TABLE dbo.book (
     id INT PRIMARY KEY IDENTITY (1, 1),
     name VARCHAR (50) NOT NULL,
     published_on DATETIME,
@@ -21,27 +21,27 @@ CREATE TABLE lms.book (
     author_id INT NOT NULL,
     book_type_id INT NOT NULL,
     version INT DEFAULT 0,
-    FOREIGN KEY (author_id) REFERENCES lms.author (id),
-    FOREIGN KEY (book_type_id) REFERENCES lms.book_type (id)
+    FOREIGN KEY (author_id) REFERENCES dbo.author (id),
+    FOREIGN KEY (book_type_id) REFERENCES dbo.book_type (id)
 );
 
-CREATE TABLE lms.member_type
+CREATE TABLE dbo.member_type
 (
     id INT PRIMARY KEY IDENTITY (1, 1),
     type VARCHAR (50) NOT NULL,
     version INT DEFAULT 0
 );
 
-CREATE TABLE lms.member
+CREATE TABLE dbo.member
 (
     id INT PRIMARY KEY IDENTITY (1, 1),
     name VARCHAR (50) NOT NULL,
     member_type_id INT NOT NULL,
     version INT DEFAULT 0
-    FOREIGN KEY (member_type_id) REFERENCES lms.member_type (id)
+    FOREIGN KEY (member_type_id) REFERENCES dbo.member_type (id)
 );
 
-CREATE TABLE lms.issued_books
+CREATE TABLE dbo.issued_books
 (
     id BIGINT PRIMARY KEY IDENTITY (1, 1),
     book_id INT NOT NULL,
@@ -49,7 +49,7 @@ CREATE TABLE lms.issued_books
     issued_on DATETIME,
     returned_on DATETIME,
     version INT DEFAULT 0,
-    FOREIGN KEY (book_id) REFERENCES lms.book (id),
-    FOREIGN KEY (member_id) REFERENCES lms.member (id)
+    FOREIGN KEY (book_id) REFERENCES dbo.book (id),
+    FOREIGN KEY (member_id) REFERENCES dbo.member (id)
 );
 

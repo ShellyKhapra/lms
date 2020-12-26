@@ -3,6 +3,7 @@ package com.lms.api.resources;
 import com.lms.api.ApiConstants;
 import com.lms.common.models.Author;
 import com.lms.common.models.AuthorList;
+import com.lms.common.models.AuthorPost;
 import com.lms.service.AuthorService;
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.Operation;
@@ -134,8 +135,11 @@ public class AuthorResource {
                     @ApiResponse(responseCode = "400", description = ApiConstants.BAD_REQUEST)
             })
     public Author register(
-            @Parameter(description = "Author registration request") Author author) {
+            @Parameter(description = "Author registration request") AuthorPost authorPost) {
 
-        return this.authorService.register(author);
+        return this.authorService.register(authorPost);
     }
+
+    //PUT -- To modify Author
+    //DELETE -- To delete Author
 }

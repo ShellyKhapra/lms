@@ -1,0 +1,101 @@
+{
+	"info": {
+		"_postman_id": "654a8fd0-5ae1-45ac-8783-3d8ab5c34a47",
+		"name": "LMS",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GET {{api-host}}/v1/authors",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{api-host}}/v1/authors",
+					"host": [
+						"{{api-host}}"
+					],
+					"path": [
+						"v1",
+						"authors"
+					],
+					"query": [
+						{
+							"key": "firstName",
+							"value": "Golu",
+							"disabled": true
+						},
+						{
+							"key": "lastName",
+							"value": "Khapra",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET by ID {{api-host}}/v1/authors/3",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{api-host}}/v1/authors/3",
+					"host": [
+						"{{api-host}}"
+					],
+					"path": [
+						"v1",
+						"authors",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST Author",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"firstName\": \"Sandeep\",\n  \"lastName\": \"Saroha\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{api-host}}/v1/authors",
+					"host": [
+						"{{api-host}}"
+					],
+					"path": [
+						"v1",
+						"authors"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

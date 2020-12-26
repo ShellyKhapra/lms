@@ -7,9 +7,11 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface AuthorRepository extends PagingAndSortingRepository<EAuthor, Long> {
+public interface AuthorRepository extends PagingAndSortingRepository<EAuthor, Integer> {
 
     List<EAuthor> getAuthorByFirstName(String firstName);
+
+    List<EAuthor> getAuthorByLastName(String lastName);
 
     List<EAuthor> getAuthorByFirstNameAndLastName(String firstName, String lastName);
 
