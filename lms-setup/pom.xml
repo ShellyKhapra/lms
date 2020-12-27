@@ -10,12 +10,51 @@
 
 
     <dependencies>
-
+        <dependency>
+            <groupId>com.microsoft.sqlserver</groupId>
+            <artifactId>mssql-jdbc</artifactId>
+            <version>8.4.1.jre8</version>
+        </dependency>
     </dependencies>
 
-<!--    <plugin>-->
-<!--    <groupId>org.flywaydb</groupId>-->
-<!--    <artifactId>flyway-maven-plugin</artifactId>-->
-<!--    <version>7.3.2</version>-->
-<!--    </plugin>-->
+    <build>
+        <plugins>
+
+            <plugin>
+                <groupId>org.flywaydb</groupId>
+                <artifactId>flyway-maven-plugin</artifactId>
+                <version>6.5.6</version>
+
+                <!-- Note that we're executing the Flyway
+                     plugin in the "generate-sources" phase -->
+                <executions>
+                    <execution>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>migrate</goal>
+                        </goals>
+                    </execution>
+                </executions>
+
+                <!-- Note that we need to prefix the db/migration
+                     path with filesystem: to prevent Flyway
+                     from looking for our migration scripts
+                     only on the classpath -->
+                <configuration>
+                    <baselineOnMigrate>true</baselineOnMigrate>
+                    <url>jdbc:sqlserver://localhost:1433;databaseName=lms_db</url>
+                    <user>sa</user>
+                    <password>RmsUser1#</password>
+                    <schemas>
+                        <schema>dbo</schema>
+                    </schemas>
+                    <locations>
+                        <location>filesystem:src/main/resources/db/migration</location>
+                    </locations>
+                </configuration>
+            </plugin>
+
+        </plugins>
+    </build>
+
 </project>
